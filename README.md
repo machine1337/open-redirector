@@ -1,7 +1,9 @@
 # open-redirector
      An advanced Script to find open redirect vulnerabilies.
 ![u1](https://user-images.githubusercontent.com/82051128/120812412-63679180-c566-11eb-89ba-4cfc949fad23.png)
+
 ![u2](https://user-images.githubusercontent.com/82051128/120812423-65315500-c566-11eb-8c1a-3e2d84cf4e29.png)
+
 ![u3](https://user-images.githubusercontent.com/82051128/120812434-66628200-c566-11eb-97b6-cd8c55d68f8b.png)
      
 # Installation:
