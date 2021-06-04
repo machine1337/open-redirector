@@ -12,7 +12,12 @@
     
 # Pre-requisite:
     Only Curl is Required to run this script.
-
+    
+# Note:
+     Q: What should my urls.txt file looks like?
+     A: https://target.com
+        https://target.com/?redir.php?=
+        
 # Usage:
     1. ./script.sh
     2. Next provide ur open redirect payloads.
