@@ -6,6 +6,9 @@
 
 ![u3](https://user-images.githubusercontent.com/82051128/120812434-66628200-c566-11eb-97b6-cd8c55d68f8b.png)
      
+# Alert:
+      Plz update my script once a week bcz for better performance and fixing bugs.
+      
 # Installation:
     1. git clone https://github.com/machine1337/open-redirector
     2. cd open-redirector && chmod +x script.sh
