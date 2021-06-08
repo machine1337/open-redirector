@@ -30,6 +30,15 @@ echo -e ${RED}"#################################################################
             
 }
 sleep 1
+echo -e ${CP}"[+] Checking Internet Connectivity"
+if [[ "$(ping -c 1 8.8.8.8 | grep '100% packet loss' )" != "" ]]; then
+  echo "No Internet Connection"
+  exit 1
+  else
+  echo "Internet is present"
+  
+fi
+
 function red_url(){
 clear
 banner
@@ -43,10 +52,10 @@ for i in $(cat $list); do
 file=$(curl -s -m5 -I $domain$i)
 echo -n -e ${YELLOW}"\nURL: $domain" >> output.txt
 echo "$file" >> output.txt
-if grep -q evil   <<<"$file"
+if grep -q 302   <<<"$file"
   then
-  echo -n -e ${RED}"\nURL: $domain  Vulnerable\n"
-  cat output.txt | grep   -e  evil  
+  echo -n -e ${RED}"\nURL: $domain$i  Vulnerable\n"
+  cat output.txt | grep   -e  URL  -e evil  >> vulnerable_url.txt
   rm output.txt
   else
   echo -n -e ${GREEN}"\nURL: $domain  Not Vulnerable\n"
@@ -66,21 +75,22 @@ echo -e ${CNC}"\n[+] Searching For Open redirection"
 
 for i in $(cat $urls ); do
 for j in $(cat $pay); do
-     file=$(curl -s -m5 -I  $i$j)  
+     file=$(curl  -s -m5 -I  $i$j)  
      
     echo -n -e ${YELLOW}"URL: $i" >> output.txt
     echo "$file" >> output.txt
     
-    if grep -q evil   <<<"$file"
+    if grep -q  302  <<<"$file"
   then
-  echo  -e ${RED}"\nURL: $i  Vulnerable"${RED}
-  cat output.txt | grep -e URL  -e  evil   >> vulnerable_urls.txt
+  
+  echo  -e ${RED}"\nURL: $i$j Vulnerable"${RED} 
+  cat output.txt | grep -e URL -e evil  >> vulnerable_urls.txt
   rm output.txt
   else
   echo -n -e ${GREEN}"\nURL: $i  Not Vulnerable"
    rm output.txt
- fi
-
+ 
+fi
 done
 done
 }
@@ -105,4 +115,3 @@ echo -n -e ${YELLOW}"\n[+] Select: "
                 fi
 }
 menu
-
