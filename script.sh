@@ -54,11 +54,11 @@ echo -n -e ${YELLOW}"\nURL: $domain" >> output.txt
 echo "$file" >> output.txt
 if grep -q 302   <<<"$file"
   then
-  echo -n -e ${RED}"\nURL: $domain$i  Vulnerable\n"
+  echo -n -e ${RED}"\nURL: $domain ${CP}"[Payload $i]" ${RED}[Vulnerable]\n"
   cat output.txt | grep   -e  URL  -e evil  >> vulnerable_url.txt
   rm output.txt
   else
-  echo -n -e ${GREEN}"\nURL: $domain  Not Vulnerable\n"
+  echo -n -e ${GREEN}"\nURL: $domain  [Not Vulnerable]\n"
    rm output.txt
  fi
  done
@@ -83,18 +83,27 @@ for j in $(cat $pay); do
     if grep -q  302  <<<"$file"
   then
   
-  echo  -e ${RED}"\nURL: $i$j Vulnerable"${RED} 
+  echo  -e ${RED}"\nURL: $i ${CP}"[Payload $j]"${RED}[Vulnerable]\n"
   cat output.txt | grep -e URL -e evil  >> vulnerable_urls.txt
   rm output.txt
   else
-  echo -n -e ${GREEN}"\nURL: $i  Not Vulnerable"
+  echo -n -e ${GREEN}"\nURL: $i  [Not Vulnerable]"
    rm output.txt
  
 fi
 done
 done
 }
-
+trap ctrl_c INT
+ctrl_c() {
+clear
+echo -e ${RED}"[*] (Ctrl + C ) Detected, Trying To Exit... "
+echo -e ${RED}"[*] Stopping Services... "
+sleep 1
+echo ""
+echo -e ${YELLOW}"[*] Thanks For Using Open Redirector  :)"
+exit
+}
 menu()
 {
 clear
