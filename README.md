@@ -25,6 +25,9 @@
     1. ./script.sh
     2. Next provide ur open redirect payloads.
     
+# Video:
+ https://www.youtube.com/watch?v=NG3f7Cpbfe4
+    
 # Credit:
     If u like my tool then kindly give us a star and follow! Thanks.
     
