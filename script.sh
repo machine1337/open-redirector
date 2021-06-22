@@ -55,7 +55,7 @@ echo "$file" >> output.txt
 if grep -q 302   <<<"$file"
   then
   echo -n -e ${RED}"\nURL: $domain ${CP}"[Payload $i]" ${RED}[Vulnerable]\n"
-  cat output.txt | grep   -e  URL  -e evil  >> vulnerable_url.txt
+  cat output.txt | grep   -e  URL  -e evil | sed 's/\=.*/=/'  >> vulnerable_url.txt
   rm output.txt
   else
   echo -n -e ${GREEN}"\nURL: $domain  [Not Vulnerable]\n"
@@ -84,7 +84,7 @@ for j in $(cat $pay); do
   then
   
   echo  -e ${RED}"\nURL: $i ${CP}"[Payload $j]"${RED}[Vulnerable]\n"
-  cat output.txt | grep -e URL -e evil  >> vulnerable_urls.txt
+  cat output.txt | grep -e URL -e evil | sed 's/\=.*/=/'  >> vulnerable_urls.txt
   rm output.txt
   else
   echo -n -e ${GREEN}"\nURL: $i  [Not Vulnerable]"
